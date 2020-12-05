@@ -40,122 +40,112 @@ Manuscripts: 2 parts are reused, 8 could be new. Anyway, we should compare this 
 
 ## Parts
 
-### MsShelfmarkPart
+### MsSignaturesPart
 
-- libraryId (thesaurus): string\*
-- signature: string\*
+See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#mssignaturespart)
 
-### CountryPlaces Part
+### MsPlacePart
 
-The following model is just a draft for a location based on *modern* countries. Its only required datum is the country; all the other data are optional, and can additionally define a point and/or an approximate square region.
-
-This is a very practical and general-purpose place definition modeled after the [Google geocoding system](https://developers.google.com/maps/documentation/javascript/geocoding).
-
-- `locations`: `CountryLocation[]`+: country-based location:
-  - `tag`: string\* (optional thesaurus)
-  - `region`: string\* (thesaurus): [ISO 3166-1 alpha 2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-  - `point`: `LatLonLocation`:
-    - `lat`: number (double)
-    - `lon`: number (double)
-  - `address`: string. The address is a string composed by 1 or more components, separated by commas. Geocoded "addresses" are not just postal addresses, but any way to geographically name a location. For example, when geocoding a point in the city of Chicago, the geocoded point may be labeled as a street address, as the city (Chicago), as its state (Illinois) or as a country (The United States).
-  - `plusCode`: string. This refers to a square area using [Open Location Code](https://github.com/google/open-location-code). Probably it has no usage for manuscripts, but could be useful for sites, to provide a precise area without having to describe it exactly with more complex geometries. See [plus codes](https://plus.codes/) for more.
-  - `note`: string.
-
-Ancient world modes are different, because there a named place may have several names and several possible locations (or even none). See e.g. 
-[Pleiades](pleiades.stoa.org/help/pleiades-data-model).
-
-The point can be geocoded automatically starting from its address (and country), using the Google geocoding service. Anyway, doing it in the app automatically would require a paid subscription to the service (which is paid per usage). We thus have better avoid inserting this functionality in the editor, and rather systematically add it later at once before publishing.
+See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#msplacepart)
 
 ### MsContentsPart
 
-- `contents` (`MsContent[]`):
-  - `author`\* (`string`, thesaurus?)
-  - `claimedAuthor` (`string`, thesaurus?)
-  - `work`\* (`string`)
-  - `start` (`MsLocation`)
-  - `end` (`MsLocation`)
-  - `state` (`string`, thesaurus?)
-  - `note` (`string`)
-  - `units` (`MsContentUnit[]`):
-    - `label` (string)
-    - `incipit`\* (string)
-    - `explicit`\* (string)
+- contents (`MsContent[]`):
+  - start\* (`MsLocation`)
+  - end\* (`MsLocation`)
+  - citation\* (`string`): either got from ThlL (via author/work hierarchical thesaurus) or manually written.
+  - title (`string`)
+  - incipit\* (`string`)
+  - editions (`DocReference[]`): references to modern editions.
+  - note (`string`)
 
-### MsCodexPart
+### MsUnitsPart
 
-- codicological units: `MsUnit[]+`:
-  - start: `MsLocation`\*
-  - end: `MsLocation`\*
-  - material (thesaurus): string\*
-  - leafCount\*: int
-  - quires: string
-  - leaf/page numbering: string
-  - quires numbering: string
-  - leafSize: `PhysicalSize`\*:
-    - w: `PhysicalDimension`\*:
-      - value: float\*
-      - unit (thesaurus): string\*
-      - incomplete: boolean
-    - h\*: as w
-    - d: as w, but optional
-    - note: string
-  - writtenAreaSize: `PhysicalSize`\*
-  - ruling: `MsRuling`\*:
-    - manner of execution (thesaurus): string
-    - system (thesaurus): string
-    - type (thesaurus): string
-    - description: string
-  - watermark: `MsWatermark`\*:
-    - value (thesaurus): string\*
-    - description: string
-  - conservation state: string\*
-  - binding: string
+Codicological description.
+
+- `units`: `MsUnit[]+` (codicological units):
+  - `start`\*: `MsLocation`
+  - `end`\*: `MsLocation`
+  - `palimpsests` (`MsPalimpsest[]`): the sheet(s) which are palimpsests inside this unit:
+    - `locations` (`MsLocation[]`): 1 or more sheets in the unit's range.
+    - `date` (`HistoricalDate`)
+    - `note` (`string`)
+  - `material`\* (`string`, thesaurus)
+  - `sheetCount`\* (`int`)
+  - `guardSheetCount`\* (`int`)
+  - `guardSheets` (`MsGuardSheet[]`):
+    - `isBack` (`boolean`)
+    - `material` (`string`)
+    - `watermarks` (`MsWatermark[]`):
+      - `value` (`string`)
+      - `description` (`string`)
+    - `note` (`string`)
+  - `quires` (`string`)
+  - `sheetNumbering` (`string`; leaf or page numbering)
+  - `quireNumbering` (`string`)
+  - `leafSizes` (`PhysicalSize[]`): note that the requested _incomplete_ property is rather represented by `tag`. Tag is a more general purpose classification and tagging device for each specific dimension: it may be "incomplete", and/or also additional values.
+  - `writtenAreaSize` (`PhysicalSize`)
+  - `rulings` (`MsRuling[]`)
+    - `manner` of execution (`string`, thesaurus)
+    - `system` (`string`, thesaurus)
+    - `type` (`string`, thesaurus)
+    - `description` (`string`)
+  - `watermarks` (`MsWatermark[]`)
+  - conservation `state` (`string`)
+  - `binding` (`string`)
 
 ### MsScriptsPart
 
-- scripts: `MsScript[]`+:
-  - role (thesaurus)\*: string
-  - language (thesaurus)\*: string ([ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3))
-  - type (thesaurus-h): string
-  - hands: `MsHand[]`+:
-    - id: string\*
-    - datation: `HistoricalDate`
-    - start: `MsLocation`\*
-    - end: `MsLocation`\*
-    - description: string\*
-    - letters: `MsHandLetter[]`(0-N):
-      - letter: string\*
-      - description: string
-      - imageId: string
-    - abbreviations: string\* (MD)
+- `scripts` (`MsScript[]`):
+  - `role`\* (`string`, thesaurus; e.g. mano principale, secondaria, scriptio superior, scriptio inferior...)
+  - `language`\* (`string` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `type` (`string`, thesaurus-h)
+  - `hands` (`MsHand[]`+):
+    - `id`\* (`string`)
+    - `datation` (`HistoricalDate`)
+    - `start`\* (`MsLocation`)
+    - `end`\* (`MsLocation`)
+    - `description`\* (`string`)
+    - `letters` (`MsHandLetter[]`):
+      - `letter`\* (`string`)
+      - `description` (`string`)
+      - `imageId` (`string`)
+    - `abbreviations` (`string`, MD)
 
 ### MsFormalFeaturesPart
 
 Orthographic/phonetic peculiarities:
 
-- description: string\* (MD)
-- hands: `MsHand[]`+
+- `features` (`MsFormalFeature[]`):
+  - `description`\* (`string`, MD)
+  - `handId`\* (`string`)
 
-TODO: what is the relationship with hands in scripts??
+### MsOrnamentPart
 
-### MsDecorationsPart
+Ornamentation (in code shortened as _ornament_. for practical purposes).
 
-- `decorations` (`MsDecoration[]`):
-  - `type`* (`string`, thesaurus)
-  - `start`* (`MsLocation`)
-  - `end`* (`MsLocation`)
-  - `position` (position in page: `string`, thesaurus?) TODO: define: what is exactly?? The relative position in the page layout?
+- `ornaments` (`MsOrnament[]`):
+  - `type`\* (`string`, thesaurus)
+  - `start`\* (`MsLocation`)
+  - `end`\* (`MsLocation`)
   - `size` (`PhysicalSize`)
   - `description` (`string`, MD, 1000)
 
 ### MsHistoryPart
 
-- `provenance`\* (string)
-- `history`\* (string, MD, 5000)
-- `owners` (`MsOwner[]`):
-  - `firstName`
-  - `lastName`\*
-  - `externalIds` (`string[]`)
+- `provenances`\* ([GeoAddress[]](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#mshistorypart))
+- `history`\* (`string`, MD, 5000)
+- `owners` (`string[]`)
+- `subscription` (`MsSubscription`):
+  - `locations`\* (`MsLocation[]`)
+  - `language`\* (`string`, thesaurus)
+  - `text`\* (`string`)
+  - `note` (`string`)
+  - `handId` (`string`)
+- `annotations` and corrections (`MsAnnotation[]`):
+  - `language`\* (`string`, thesaurus)
+  - `note` (`string`)
+  - `handId` (`string`)
 
 ### MsInterpLayerFragment
 
@@ -175,13 +165,13 @@ Humanistic interpolations.
 ### TranscrLayerFragment
 
 - entries: `TranscriptionEntry[]`:
-  - type (thesaurus): string*
+  - type (thesaurus): string\*
   - language (thesaurus): string ([ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3))
-  - value: string*
+  - value: string\*
   - tag (thesaurus): string
   - groupId: string
   - sources: `MsReadingSource[]`+
-    - witness (thesaurus): string*
+    - witness (thesaurus): string\*
     - handId: string
 
 ### LingTagsLayerFragment
