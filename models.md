@@ -15,7 +15,7 @@ Text with layers: 4 parts/fragments are reused, 3 fragments are new.
 - [note part](https://github.com/vedph/cadmus_core/wiki/General-Parts#note) for translation, with `role`=`transl` and `tag`=language (`NotePart`).
 
 - [apparatus layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#apparatus-model) (`ApparatusLayerFragment`)
-- [literary quotations layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#quotations) (`QuotationsLayerFragment`) for apparatus fontium et locorum classicorum. Parallel quotations entries can be grouped under a common parent quotation using the `tag` property (e.g. tagging the parent as `prisc1` and its children as `prisc1.1`, `prisc1.2`, etc.). This avoids replicating the quotation schema with a potentially recursive nesting and simplifies the schema with a flat list.
+- [literary quotations layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#quotations) (`QuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_. Parallel quotations entries can be grouped under a common parent quotation using the `tag` property (e.g. tagging the parent as `prisc1` and its children as `prisc1.1`, `prisc1.2`, etc.). This avoids replicating the quotation schema with a potentially recursive nesting and simplifies the schema with a flat list.
 - transcriptions layer (`TranscrLayerFragment`), used with different roles for:
   - paleographic transcriptions
   - glosses
@@ -25,18 +25,16 @@ Text with layers: 4 parts/fragments are reused, 3 fragments are new.
 
 ### Manuscript
 
-Manuscripts: 2 parts are reused, 8 could be new. Anyway, we should compare this plan with the modeling already in place for the [codicological part](https://github.com/vedph/cadmus_itinera_doc#codicology) of the [Itinera](https://github.com/vedph/cadmus_itinera_doc) project. Having a more or less shared codicological model could be beneficial for both projects, in order to define some common ground and provide more integration potential for any project in the global community.
-
 - [historical date](https://github.com/vedph/cadmus_core/wiki/General-Parts#historical-date-model)\*
 - [generic bibliography part](https://github.com/vedph/cadmus_core/wiki/General-Parts#bibliography)\*
-- ms shelfmark\*: compare with [Itinera ms signatures](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md).
-- ms country places\*: compare with [Itinera ms place of origin](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md) (the places of provenance are listed in the ms history).
-- ms contents\*: compare with [Itinera ms contents](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-contents-part.md).
-- ms codicological description\*: compare with [Itinera ms material description](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-material-dsc-part.md), [Itinera ms quires](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-quires-part.md), [Itinera ms dimensions](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-dimensions-part.md), [Itinera ms binding](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-binding-part.md), [Itinera ms catchwords](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-catchwords-part.md), [Itinera ms composition](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-composition-part.md).
-- ms scripts part\*: compare with [Itinera ms hands](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-hands-part.md) and the corresponding [Itinera persons](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/person-part.md)
-- ms formal features?: TODO: define if this is still required or just got merged into `MsScriptsPart`.
-- ms decorations: compare with [Itinera ms decorations](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-decorations-part.md)
-- ms history\*: compare with [Itinera ms history](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-history-part.md)
+- ms signature(s)\* [Itinera ms signatures](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md).
+- ms place\*: [Itinera ms place of origin](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md) (the places of provenance are listed in the ms history).
+- ms contents\* (`MsContentPart`)
+- ms codicological description\* (`MsUnitsPart`)
+- ms history\* (`MsHistoryPart`)
+- ms scripts part (`MsScriptsPart`)
+- ms formal features (`MsFormalFeaturesPart`)
+- ms ornamentation (`MsOrnamentsPart`)
 
 ## Parts
 
@@ -120,7 +118,7 @@ Orthographic/phonetic peculiarities:
   - `description`\* (`string`, MD)
   - `handId`\* (`string`)
 
-### MsOrnamentPart
+### MsOrnamentsPart
 
 Ornamentation (in code shortened as _ornament_. for practical purposes).
 
