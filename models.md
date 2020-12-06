@@ -53,8 +53,8 @@ See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#
 - contents (`MsContent[]`):
   - start\* (`MsLocation`)
   - end\* (`MsLocation`)
-  - work (`string`, thesaurus): author and work.
-  - citation (`string`): either got from ThlL (via author/work hierarchical thesaurus) or manually written.
+  - work (`string`, thesaurus): author and work; this can be picked from a thesaurus, or manually written.
+  - location (`string`)
   - title (`string`)
   - incipit\* (`string`)
   - explicit\* (`string`)
@@ -153,50 +153,20 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 
 Literary quotations.
 
-- entries (`InlineQuotationEntry[]`):
+- entries (`VarQuotationEntry[]`): quotations with variants:
   - `tag`\* (`string`, thesaurus): this is used to classify the quotation, e.g. as one quotation included for comparison purposes.
   - `work`\* (`string`, thesaurus): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
-  - variants (`InlineApparatusEntry[]`): variant readings:
-    - `loc`\* (`string`): the coordinates required to locate the variant readings with reference to the portion extracted from the base text and representing the quotation. To make things simple for the user, assuming that we're not going under the level of the word we could just use the number of token (=graphical word), i.e. in `Laviniaque venit litora` we would have `Laviniaque`=1, `venit`=2, `litora`=3. Alternatively, we could report the _full_ quotation, and, should we later need it, eventually let the machine infer the differences by comparing the two portions of text. In this case, we would not have `type` nor `loc`, but just a value with the quotation.
+  - variants (`QuotationVariant[]`): variant readings:
+    - `lemma`\* (`string`): the lemma
     - `type`\* (`string`, thesaurus, equal to that of the apparatus entry)
-    - `value`\* (`string`)
+    - `value`\* (`string`): the value (zero for deletions)
     - `sources`\* (`ReadingSource[]`):
       - `type` (`string`, thesaurus): type of source: direct tradition from cited authors, philologists, etc.
-      - `value` (`string`)
+      - `work`\* (`string`, thesaurus): author and work.
+      - `location`\* (`string`): location in the work (book, chapter, etc.)
 
-Example: base text:
-
-```txt
-... Laviniaque venit
-litora
-```
-
-fragment attached to the base text:
-
-- tag: `-` (=default)
-- work: `verg.aen`
-- location: `1, 2-3`
-- variants:
-  - loc: `1`
-  - type: `replacement`
-  - value: `Lavinaque`
-  - sources:
-    - type: `cited-direct`
-    - value: `pars codd.`
-
-Or, less granular:
-
-- tag: `-`
-- work: `verg.aen`
-- location: `1, 2-3`
-- variants:
-  - value: `Lavinaque venit litora`
-  - sources:
-    - type: `cited-direct`
-    - value: `pars codd.`
-
-The machine could then infer the difference between `Laviniaque venit litora` and `Lavinaque venit litora`, i.e. the replacement of `Laviniaque` with `Lavinaque`.
+As you can see, the variants listed for the quotations are located only for human readers via `lemma`.
 
 ### InterpLayerFragment
 
@@ -212,7 +182,7 @@ Humanistic interpolations.
   - `sources` (`ReadingSource[]`)
     - `witness`\* (`string`, thesaurus)
     - `handId` (`string`)
-  - `quotations` (`QuotationEntry[]`): or these are rather `InlineQuotationEntry`?
+  - `quotations` (`VarQuotationEntry[]`)
 
 ### TranscrLayerFragment
 
