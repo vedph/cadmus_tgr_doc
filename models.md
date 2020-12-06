@@ -154,17 +154,24 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 Literary quotations.
 
 - entries (`VarQuotationEntry[]`): quotations with variants:
-  - `tag`\* (`string`, thesaurus): this is used to classify the quotation, e.g. as one quotation included for comparison purposes.
+  - `tag`\* (`string`, thesaurus): grammatical/linguistic. I'd leave the "tag" name instead of "type" as this is more general and conforms to the convention otherwise used across models, to represent with this name some general purpose classification linked to a thesaurus.
   - `work`\* (`string`, thesaurus): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
-  - variants (`QuotationVariant[]`): variant readings:
+  - `parallels` (`QuotationParallel`): further occurrences of the same quotation in other grammatical works:
+    - `tag` (`string`, thesaurus)
+    - `work`\* (`string`, thesaurus): author and work.
+    - `location`\* (`string`): location in the work (book, chapter, etc.)
+  - `variants` (`QuotationVariant[]`): variant readings:
     - `lemma`\* (`string`): the lemma
     - `type`\* (`string`, thesaurus, equal to that of the apparatus entry)
     - `value`\* (`string`): the value (zero for deletions)
-    - `sources`\* (`ReadingSource[]`):
-      - `type` (`string`, thesaurus): type of source: direct tradition from cited authors, philologists, etc.
-      - `work`\* (`string`, thesaurus): author and work.
-      - `location`\* (`string`): location in the work (book, chapter, etc.)
+    - `witnesses` (`AnnotatedValue[]`):
+      - `value`\* (`string`): e.g. "O"
+      - `note` (`string`): e.g. "manus altera"
+    - `authors` (`LocAnnotatedValue[]`):
+      - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen."
+      - `location` (`string`): e.g. "Kleine Schriften, p.12" or "12, 587"
+      - `note` (`string`): e.g. "exempli gratia"
 
 As you can see, the variants listed for the quotations are located only for human readers via `lemma`.
 
