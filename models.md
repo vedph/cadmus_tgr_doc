@@ -17,12 +17,12 @@ Text with layers.
 Layer parts:
 
 - [apparatus layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#apparatus-model) (`ApparatusLayerFragment`)
-- [literary quotations layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#quotations) (`QuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_. Parallel quotations entries can be grouped under a common parent quotation using the `tag` property (e.g. tagging the parent as `prisc1` and its children as `prisc1.1`, `prisc1.2`, etc.). This avoids replicating the quotation schema with a potentially recursive nesting and simplifies the schema with a flat list.
+- [literary quotations layer] (`QuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
 - transcriptions layer (`TranscrLayerFragment`), used with different roles for:
   - paleographic transcriptions
   - glosses
   - paratext
-- interpolations layer (`MsInterpLayerFragment`)
+- interpolations layer (`InterpLayerFragment`)
 - linguistic tags layer (`LingTagsLayerFragment`)
 
 ### Manuscript
