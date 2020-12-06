@@ -8,11 +8,13 @@ In this project there are just 2 types of items: text with layers, and manuscrip
 
 ### Text
 
-Text with layers: 4 parts/fragments are reused, 3 fragments are new.
+Text with layers.
 
 - [token-based text part](https://github.com/vedph/cadmus_core/wiki/General-Parts#token-text)\* (`TokenTextPart`)
 - [note part](https://github.com/vedph/cadmus_core/wiki/General-Parts#note) for generic notes (`NotePart`)
 - [note part](https://github.com/vedph/cadmus_core/wiki/General-Parts#note) for translation, with `role`=`transl` and `tag`=language (`NotePart`).
+
+Layer parts:
 
 - [apparatus layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#apparatus-model) (`ApparatusLayerFragment`)
 - [literary quotations layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#quotations) (`QuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_. Parallel quotations entries can be grouped under a common parent quotation using the `tag` property (e.g. tagging the parent as `prisc1` and its children as `prisc1.1`, `prisc1.2`, etc.). This avoids replicating the quotation schema with a potentially recursive nesting and simplifies the schema with a flat list.
@@ -26,7 +28,7 @@ Text with layers: 4 parts/fragments are reused, 3 fragments are new.
 ### Manuscript
 
 - [historical date](https://github.com/vedph/cadmus_core/wiki/General-Parts#historical-date-model)\*
-- [generic bibliography part](https://github.com/vedph/cadmus_core/wiki/General-Parts#bibliography)\*
+- [generic bibliography part](https://github.com/vedph/cadmus_core/wiki/General-Parts#bibliography)
 - ms signature(s)\* [Itinera ms signatures](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md).
 - ms place\*: [Itinera ms place of origin](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md) (the places of provenance are listed in the ms history).
 - ms contents\* (`MsContentPart`)
@@ -141,7 +143,7 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
   - `note` (`string`)
   - `handId` (`string`)
 - `annotations` and corrections (`MsAnnotation[]`):
-  - `language`\* (`string`, thesaurus)
+  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
   - `note` (`string`)
   - `handId` (`string`)
 
@@ -149,42 +151,42 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 
 Humanistic interpolations.
 
-- `entries`: `MsInterpolationEntry[]`:
-  - `type` (thesaurus): `string`\*
-  - `language`: `string` ([ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3))
-  - `value`: `string`\*
-  - `tag` (thesaurus): `string`
-  - `groupId`: `string`
-  - `sources`: `MsReadingSource[]`+
-    - `witness` (thesaurus): `string`\*
-    - `handId`: `string`
-  - `quotations`: `QuotationEntry[]`
+- `entries` (`MsInterpolationEntry[]`):
+  - `type`\* (string, thesaurus)
+  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `value`\* (`string`)
+  - `tag` (`string`, thesaurus)
+  - `groupId` (`string`)
+  - `sources` (`MsReadingSource[]`)
+    - `witness`\* (`string`, thesaurus)
+    - `handId` (`string`)
+  - `quotations` (`QuotationEntry[]`)
 
 ### TranscrLayerFragment
 
 - entries: `TranscriptionEntry[]`:
-  - type (thesaurus): string\*
-  - language (thesaurus): string ([ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3))
-  - value: string\*
-  - tag (thesaurus): string
-  - groupId: string
-  - sources: `MsReadingSource[]`+
-    - witness (thesaurus): string\*
-    - handId: string
+  - type\* (`string`, thesaurus)
+  - language (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - value\* (`string`)
+  - tag (`string`, thesaurus)
+  - groupId (`string`)
+  - sources (`MsReadingSource[]`):
+    - witness\* (`string`, thesaurus)
+    - handId (`string`)
 
 ### LingTagsLayerFragment
 
 Tag: `fr.it.vedph.tgr.ling-tags`.
 
-- `forms`: `LingTaggedForm[]`:
-  - `lemmata`: `string[]`: optional normalized text forms
-  - `dubious`: `boolean` (Thesaurus dubii sermonis)
-  - `note`: string
-  - `tags`: `AnnotatedTag[]`:
-    - `value`: `string`\*
-    - `notes`: `TaggedNote[]`:
-      - `tag`: `string`\*
-      - `note`: `string`\*
+- `forms` (`LingTaggedForm[]`):
+  - `lemmata` (`string[]`: optional normalized text forms
+  - `dubious` (`boolean` (Thesaurus dubii sermonis)
+  - `note` (`string`)
+  - `tags` (`AnnotatedTag[]`):
+    - `value`\* (`string`)
+    - `notes` (`TaggedNote[]`):
+      - `tag`\* (`string`)
+      - `note`\* (`string`)
 
 The user experience for tags is here planned as follows: the user picks tags from a tree. The thesaurus IDs use the dot as the separator to represent a hierarchy, e.g. `a.lit.l-sonus.medius` = ancient / littera / l-sonus / medius.
 
