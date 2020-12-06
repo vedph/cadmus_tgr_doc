@@ -208,6 +208,7 @@ Humanistic interpolations.
   - `value`\* (`string`)
   - `tag` (`string`, thesaurus)
   - `groupId` (`string`)
+  - `note` (`string`)
   - `sources` (`ReadingSource[]`)
     - `witness`\* (`string`, thesaurus)
     - `handId` (`string`)
