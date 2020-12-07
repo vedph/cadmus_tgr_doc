@@ -10,13 +10,13 @@ In this project there are just 2 types of items: text with layers, and manuscrip
 
 Text with layers.
 
-- [token-based text part](https://github.com/vedph/cadmus_core/wiki/General-Parts#token-text)\* (`TokenTextPart`)
-- [note part](https://github.com/vedph/cadmus_core/wiki/General-Parts#note) for generic notes (`NotePart`)
-- [note part](https://github.com/vedph/cadmus_core/wiki/General-Parts#note) for translation, with `role`=`transl` and `tag`=language (`NotePart`).
+- [token-based text part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#token-text)\* (`TokenTextPart`)
+- [note part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#note) for generic notes (`NotePart`)
+- [note part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#note) for translation, with `role`=`transl` and `tag`=language (`NotePart`).
 
 Layer parts:
 
-- [apparatus layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#apparatus-model) (`ApparatusLayerFragment`)
+- [apparatus layer](https://github.com/vedph/cadmus_doc/blob/master/web/help/philology-parts.md#apparatus) (`ApparatusLayerFragment`)
 - quotations layer (`VarQuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
 - transcriptions layer (`TranscrLayerFragment`), used with different roles for:
   - paleographic transcriptions
@@ -27,8 +27,8 @@ Layer parts:
 
 ### Manuscript
 
-- [historical date](https://github.com/vedph/cadmus_core/wiki/General-Parts#historical-date-model)\*
-- [generic bibliography part](https://github.com/vedph/cadmus_core/wiki/General-Parts#bibliography)
+- [historical date](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#historical-date)\*
+- [generic bibliography part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#bibliography)
 - ms signature(s)\* [Itinera ms signatures](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md).
 - ms place\*: [Itinera ms place of origin](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md) (the places of provenance are listed in the ms history).
 - ms contents\* (`MsContentPart`)
