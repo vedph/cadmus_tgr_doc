@@ -155,7 +155,7 @@ Literary quotations.
 
 - entries (`VarQuotationEntry[]`): quotations with variants:
   - `tag` (`string`, thesaurus)
-  - `authority`\* (`string`, thesaurus): the authorithy type (grammatical/linguistic)
+  - `authority`\* (`string`, thesaurus): the authority type (grammatical/linguistic)
   - `work`\* (`string`, thesaurus): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
   - `parallels` (`QuotationParallel[]`): further occurrences of the same quotation in other grammatical works:
