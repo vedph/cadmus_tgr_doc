@@ -157,7 +157,7 @@ Literary quotations.
   - `tag`\* (`string`, thesaurus): grammatical/linguistic. I'd leave the "tag" name instead of "type" as this is more general and conforms to the convention otherwise used across models, to represent with this name some general purpose classification linked to a thesaurus.
   - `work`\* (`string`, thesaurus): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
-  - `parallels` (`QuotationParallel`): further occurrences of the same quotation in other grammatical works:
+  - `parallels` (`QuotationParallel[]`): further occurrences of the same quotation in other grammatical works:
     - `tag` (`string`, thesaurus)
     - `work`\* (`string`, thesaurus): author and work.
     - `location`\* (`string`): location in the work (book, chapter, etc.)
