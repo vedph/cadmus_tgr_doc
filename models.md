@@ -154,7 +154,8 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 Literary quotations.
 
 - entries (`VarQuotationEntry[]`): quotations with variants:
-  - `tag`\* (`string`, thesaurus): grammatical/linguistic. I'd leave the "tag" name instead of "type" as this is more general and conforms to the convention otherwise used across models, to represent with this name some general purpose classification linked to a thesaurus.
+  - `tag` (`string`, thesaurus)
+  - `authority`\* (`string`, thesaurus): the authorithy type (grammatical/linguistic)
   - `work`\* (`string`, thesaurus): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
   - `parallels` (`QuotationParallel[]`): further occurrences of the same quotation in other grammatical works:
@@ -170,7 +171,7 @@ Literary quotations.
       - `note` (`string`): e.g. "manus altera"
     - `authors` (`LocAnnotatedValue[]`):
       - `tag` (`string`): any optional classification for the author (e.g. ancient vs modern).
-      - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen."
+      - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen.": either freely typed, or picked from a thesaurus.
       - `location` (`string`): e.g. "Kleine Schriften, p.12" or "12, 587"
       - `note` (`string`): e.g. "exempli gratia"
 
