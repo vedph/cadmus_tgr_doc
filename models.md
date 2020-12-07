@@ -17,7 +17,7 @@ Text with layers.
 Layer parts:
 
 - [apparatus layer](https://github.com/vedph/cadmus_core/wiki/Philology-Parts#apparatus-model) (`ApparatusLayerFragment`)
-- [literary quotations layer] (`QuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
+- quotations layer (`VarQuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
 - transcriptions layer (`TranscrLayerFragment`), used with different roles for:
   - paleographic transcriptions
   - glosses
@@ -149,7 +149,7 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
   - `note` (`string`)
   - `handId` (`string`)
 
-### QuotationsLayerFragment
+### VarQuotationsLayerFragment
 
 Literary quotations.
 
@@ -169,6 +169,7 @@ Literary quotations.
       - `value`\* (`string`): e.g. "O"
       - `note` (`string`): e.g. "manus altera"
     - `authors` (`LocAnnotatedValue[]`):
+      - `tag` (`string`): any optional classification for the author (e.g. ancient vs modern).
       - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen."
       - `location` (`string`): e.g. "Kleine Schriften, p.12" or "12, 587"
       - `note` (`string`): e.g. "exempli gratia"
