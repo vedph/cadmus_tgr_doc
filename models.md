@@ -183,7 +183,7 @@ Humanistic interpolations.
 
 - `entries` (`InterpolationEntry[]`):
   - `type`\* (string, thesaurus)
-  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `languages`\* (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
   - `value`\* (`string`)
   - `tag` (`string`, thesaurus)
   - `groupId` (`string`)
@@ -195,17 +195,15 @@ Humanistic interpolations.
 
 ### TranscrLayerFragment
 
-- entries: `TranscriptionEntry[]`:
-  - type\* (`string`, thesaurus)
-  - role\* (`string`, thesaurus): "paleographic transcription", "gloss", "paratext".
-  - language (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
-  - value\* (`string`)
-  - tag (`string`, thesaurus)
-  - groupId (`string`)
-  - sources (`MsReadingSource[]`):
-    - witness\* (`string`, thesaurus)
-    - handId (`string`)
-  - note (`string`)
+- `entries`: `TranscriptionEntry[]`:
+  - `type`\* (`string`, thesaurus)
+  - `role`\* (`string`, thesaurus): "paleographic transcription", "gloss", "paratext".
+  - `languages` (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `value`\* (`string`)
+  - `tag` (`string`, thesaurus)
+  - `groupId` (`string`)
+  - `sources` (`ReadingSource[]`)
+  - `note` (`string`)
 
 ### LingTagsLayerFragment
 
