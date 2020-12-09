@@ -53,7 +53,7 @@ See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#
 - contents (`MsContent[]`):
   - start\* (`MsLocation`)
   - end\* (`MsLocation`)
-  - work (`string`, thesaurus): author and work; this can be picked from a thesaurus, or manually written.
+  - work (`string`, hierarchical thesaurus: `author-works`): author and work; this can be picked from a thesaurus, or manually written.
   - location (`string`)
   - title (`string`)
   - incipit\* (`string`)
@@ -72,12 +72,12 @@ Codicological description.
     - `locations` (`MsLocation[]`): 1 or more sheets in the unit's range.
     - `date` (`HistoricalDate`)
     - `note` (`string`)
-  - `material`\* (`string`, thesaurus)
+  - `material`\* (`string`, thesaurus: `ms-materials`)
   - `sheetCount`\* (`int`)
   - `guardSheetCount`\* (`int`)
   - `guardSheets` (`MsGuardSheet[]`):
     - `isBack` (`boolean`)
-    - `material` (`string`, thesaurus)
+    - `material` (`string`, thesaurus: `ms-materials`)
     - `watermarks` (`MsWatermark[]`):
       - `value` (`string`)
       - `description` (`string`)
@@ -88,7 +88,7 @@ Codicological description.
   - `leafSizes` (`PhysicalSize[]`): note that the requested _incomplete_ property is rather represented by `tag`. Tag is a more general purpose classification and tagging device for each specific dimension: it may be "incomplete", and/or also additional values.
   - `writtenAreaSize` (`PhysicalSize`)
   - `rulings` (`MsRuling[]`)
-    - `manner` of execution (`string`, thesaurus)
+    - `manner` of execution (`string`, thesaurus: `ms-exec-manners`)
     - `system` (`string`, thesaurus)
     - `type` (`string`)
     - `description` (`string`)
@@ -99,9 +99,9 @@ Codicological description.
 ### MsScriptsPart
 
 - `scripts` (`MsScript[]`):
-  - `role`\* (`string`, thesaurus; e.g. mano principale, secondaria, scriptio superior, scriptio inferior...)
+  - `role`\* (`string`, thesaurus: `ms-script-roles`); e.g. mano principale, secondaria, scriptio superior, scriptio inferior...
   - `language`\* (`string` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
-  - `type` (`string`, thesaurus-h)
+  - `type` (`string`, hierarchical thesaurus: `ms-script-types`)
   - `hands` (`MsHand[]`+):
     - `id`\* (`string`)
     - `datation` (`HistoricalDate`)
@@ -127,7 +127,7 @@ Orthographic/phonetic peculiarities:
 Ornamentation (in code shortened as _ornament_. for practical purposes).
 
 - `ornaments` (`MsOrnament[]`):
-  - `type`\* (`string`, thesaurus)
+  - `type`\* (`string`, thesaurus: `ms-ornament-types`)
   - `start`\* (`MsLocation`)
   - `end`\* (`MsLocation`)
   - `size` (`PhysicalSize`)
@@ -140,12 +140,12 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 - `owners` (`string[]`)
 - `subscription` (`MsSubscription`):
   - `locations`\* (`MsLocation[]`)
-  - `language`\* (`string`, thesaurus)
+  - `language`\* (`string`, thesaurus: `ms-languages`)
   - `text`\* (`string`)
   - `note` (`string`)
   - `handId` (`string`)
 - `annotations` and corrections (`MsAnnotation[]`):
-  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `ms-languages`)
   - `note` (`string`)
   - `handId` (`string`)
 
@@ -154,17 +154,17 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 Literary quotations.
 
 - entries (`VarQuotationEntry[]`): quotations with variants:
-  - `tag` (`string`, thesaurus)
-  - `authority`\* (`string`, thesaurus): the authority type (grammatical/linguistic)
-  - `work`\* (`string`, thesaurus): author and work.
+  - `tag` (`string`, thesaurus: `quotation-tags`)
+  - `authority`\* (`string`, thesaurus: `quotation-authorities`): the authority type (grammatical/linguistic)
+  - `work`\* (`string`, hierarchical thesaurus: `author-works`): author and work.
   - `location`\* (`string`): location in the work (book, chapter, etc.)
   - `parallels` (`QuotationParallel[]`): further occurrences of the same quotation in other grammatical works:
-    - `tag` (`string`, thesaurus)
-    - `work`\* (`string`, thesaurus): author and work.
+    - `tag` (`string`, thesaurus: `quotation-tags`)
+    - `work`\* (`string`, thesaurus: `author-works`): author and work.
     - `location`\* (`string`): location in the work (book, chapter, etc.)
   - `variants` (`QuotationVariant[]`): variant readings:
     - `lemma`\* (`string`): the lemma
-    - `type`\* (`string`, thesaurus, equal to that of the apparatus entry)
+    - `type`\* (`string`, enumerated type equal to that of the apparatus entry type)
     - `value`\* (`string`): the value (zero for deletions)
     - `witnesses` (`AnnotatedValue[]`):
       - `value`\* (`string`): e.g. "O"
@@ -182,25 +182,25 @@ As you can see, the variants listed for the quotations are located only for huma
 Humanistic interpolations.
 
 - `entries` (`InterpolationEntry[]`):
-  - `type`\* (string, thesaurus)
-  - `languages`\* (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `type`\* (string, enumeration equal to that of the apparatus entry type)
+  - `languages`\* (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `interpolation-languages`)
   - `value`\* (`string`)
-  - `tag` (`string`, thesaurus)
+  - `tag` (`string`, thesaurus: `interpolation-tags`)
   - `groupId` (`string`)
   - `note` (`string`)
   - `sources` (`ReadingSource[]`)
-    - `witness`\* (`string`, thesaurus)
+    - `witness`\* (`string`, thesaurus: `apparatus-witnesses`)
     - `handId` (`string`)
   - `quotations` (`VarQuotationEntry[]`)
 
 ### TranscrLayerFragment
 
 - `entries`: `TranscriptionEntry[]`:
-  - `type`\* (`string`, thesaurus)
-  - `role`\* (`string`, thesaurus): "paleographic transcription", "gloss", "paratext".
-  - `languages` (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `type`\* (string, enumeration equal to that of the apparatus entry type)
+  - `role`\* (`string`, thesaurus: `transcription-roles`): "paleographic transcription", "gloss", "paratext".
+  - `languages` (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `transcription-languages`)
   - `value`\* (`string`)
-  - `tag` (`string`, thesaurus)
+  - `tag` (`string`, thesaurus: `transcription-tags`)
   - `groupId` (`string`)
   - `sources` (`ReadingSource[]`)
   - `note` (`string`)
