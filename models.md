@@ -77,7 +77,7 @@ Codicological description.
   - `guardSheetCount`\* (`int`)
   - `guardSheets` (`MsGuardSheet[]`):
     - `isBack` (`boolean`)
-    - `material` (`string`)
+    - `material` (`string`, thesaurus)
     - `watermarks` (`MsWatermark[]`):
       - `value` (`string`)
       - `description` (`string`)
@@ -90,7 +90,7 @@ Codicological description.
   - `rulings` (`MsRuling[]`)
     - `manner` of execution (`string`, thesaurus)
     - `system` (`string`, thesaurus)
-    - `type` (`string`, thesaurus)
+    - `type` (`string`)
     - `description` (`string`)
   - `watermarks` (`MsWatermark[]`)
   - conservation `state` (`string`)
