@@ -89,7 +89,7 @@ Codicological description.
   - `writtenAreaSize` (`PhysicalSize`)
   - `rulings` (`MsRuling[]`)
     - `manner` of execution (`string`, thesaurus: `ms-exec-manners`)
-    - `system` (`string`, thesaurus)
+    - `system` (`string`, thesaurus: `ms-rulings@en`)
     - `type` (`string`)
     - `description` (`string`)
   - `watermarks` (`MsWatermark[]`)
@@ -100,7 +100,7 @@ Codicological description.
 
 - `scripts` (`MsScript[]`):
   - `role`\* (`string`, thesaurus: `ms-script-roles`); e.g. mano principale, secondaria, scriptio superior, scriptio inferior...
-  - `language`\* (`string` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus)
+  - `language`\* (`string` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `ms-languages`)
   - `type` (`string`, hierarchical thesaurus: `ms-script-types`)
   - `hands` (`MsHand[]`+):
     - `id`\* (`string`)
@@ -171,7 +171,7 @@ Literary quotations.
       - `note` (`string`): e.g. "manus altera"
     - `authors` (`LocAnnotatedValue[]`):
       - `tag` (`string`): any optional classification for the author (e.g. ancient vs modern).
-      - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen.": either freely typed, or picked from a thesaurus.
+      - `value`\* (`string`): e.g. "Wilamowitz" or "Serv.Aen.": either freely typed, or picked from a thesaurus (`author-works`).
       - `location` (`string`): e.g. "Kleine Schriften, p.12" or "12, 587"
       - `note` (`string`): e.g. "exempli gratia"
 
