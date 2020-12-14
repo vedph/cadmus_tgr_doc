@@ -142,7 +142,7 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 - `owners` (`string[]`)
 - `subscription` (`MsSubscription`):
   - `locations`\* (`MsLocation[]`)
-  - `language`\* (`string`, thesaurus: `ms-languages`)
+  - `language`\* (`string`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `ms-languages`)
   - `text`\* (`string`)
   - `note` (`string`)
   - `handId` (`string`)
