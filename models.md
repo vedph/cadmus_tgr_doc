@@ -68,6 +68,8 @@ Codicological description.
 - `units`: `MsUnit[]+` (codicological units):
   - `start`\*: `MsLocation`
   - `end`\*: `MsLocation`
+  - `groupId` (`string`)
+  - `groupOrdinal` (`number`)
   - `palimpsests` (`MsPalimpsest[]`): the sheet(s) which are palimpsests inside this unit:
     - `locations` (`MsLocation[]`): 1 or more sheets in the unit's range.
     - `date` (`HistoricalDate`)
@@ -89,7 +91,7 @@ Codicological description.
   - `writtenAreaSize` (`PhysicalSize`)
   - `rulings` (`MsRuling[]`)
     - `manner` of execution (`string`, thesaurus: `ms-exec-manners`)
-    - `system` (`string`, thesaurus: `ms-rulings@en`)
+    - `system` (`string`, thesaurus: `ms-rulings`)
     - `type` (`string`)
     - `description` (`string`)
   - `watermarks` (`MsWatermark[]`)
