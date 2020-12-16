@@ -90,8 +90,8 @@ Codicological description.
   - `leafSizes` (`PhysicalSize[]`): note that the requested _incomplete_ property is rather represented by `tag`. Tag is a more general purpose classification and tagging device for each specific dimension: it may be "incomplete", and/or also additional values.
   - `writtenAreaSize` (`PhysicalSize`)
   - `rulings` (`MsRuling[]`)
-    - `manner` of execution (`string`, thesaurus: `ms-exec-manners`)
-    - `system` (`string`, thesaurus: `ms-rulings`)
+    - `manner` of execution (`string`, thesaurus: `ms-ruling-manners@en`)
+    - `system` (`string`, thesaurus: `ms-ruling-systems@en`)
     - `type` (`string`)
     - `description` (`string`)
   - `watermarks` (`MsWatermark[]`)
