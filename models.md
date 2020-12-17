@@ -1,6 +1,6 @@
 # TGR Models
 
-Models for Tradizione Grammaticale Romana.
+Models for _Tradizione Grammaticale Romana_.
 
 ## Items
 
@@ -106,7 +106,7 @@ Codicological description.
   - `type` (`string`, hierarchical thesaurus: `ms-script-types`)
   - `hands` (`MsHand[]`+):
     - `id`\* (`string`)
-    - `datation` (`HistoricalDate`)
+    - `date` (`HistoricalDate`)
     - `start`\* (`MsLocation`)
     - `end`\* (`MsLocation`)
     - `description`\* (`string`)
