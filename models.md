@@ -18,11 +18,11 @@ Layer parts:
 
 - [apparatus layer](https://github.com/vedph/cadmus_doc/blob/master/web/help/philology-parts.md#apparatus) (`ApparatusLayerFragment`)
 - quotations layer (`VarQuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
-- transcriptions layer (`TranscrLayerFragment`), used with different roles for:
+- interpolations layer (`InterpLayerFragment`), used with different roles for:
   - paleographic transcriptions
   - glosses
   - paratext
-- interpolations layer (`InterpLayerFragment`)
+  - humanistic interpolations
 - linguistic tags layer (`LingTagsLayerFragment`)
 
 ### Manuscript
@@ -181,31 +181,20 @@ As you can see, the variants listed for the quotations are located only for huma
 
 ### InterpLayerFragment
 
-Humanistic interpolations.
+Interpolations and transcriptions.
 
 - `entries` (`InterpolationEntry[]`):
   - `type`\* (string, enumeration equal to that of the apparatus entry type)
+  - `role`\* (`string`, thesaurus: `interpolation-roles`): "paleographic transcription", "gloss", "paratext".
+  - `tag` (`string`, thesaurus: `interpolation-tags`)
   - `languages`\* (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `interpolation-languages`)
   - `value`\* (`string`)
-  - `tag` (`string`, thesaurus: `interpolation-tags`)
   - `groupId` (`string`)
   - `note` (`string`)
   - `sources` (`ReadingSource[]`)
     - `witness`\* (`string`, thesaurus: `apparatus-witnesses`)
     - `handId` (`string`)
   - `quotations` (`VarQuotationEntry[]`)
-
-### TranscrLayerFragment
-
-- `entries`: `TranscriptionEntry[]`:
-  - `type`\* (string, enumeration equal to that of the apparatus entry type)
-  - `role`\* (`string`, thesaurus: `transcription-roles`): "paleographic transcription", "gloss", "paratext".
-  - `languages` (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `transcription-languages`)
-  - `value`\* (`string`)
-  - `tag` (`string`, thesaurus: `transcription-tags`)
-  - `groupId` (`string`)
-  - `sources` (`ReadingSource[]`)
-  - `note` (`string`)
 
 ### LingTagsLayerFragment
 
