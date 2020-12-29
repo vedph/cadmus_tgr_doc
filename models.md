@@ -17,8 +17,8 @@ Text with layers.
 Layer parts:
 
 - [apparatus layer](https://github.com/vedph/cadmus_doc/blob/master/web/help/philology-parts.md#apparatus) (`ApparatusLayerFragment`)
-- quotations layer (`VarQuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
-- interpolations layer (`InterpLayerFragment`), used with different roles for:
+- [quotations layer](#varquotationslayerfragment) (`VarQuotationsLayerFragment`) for _apparatus fontium et locorum classicorum_.
+- [interpolations layer](#interpolationslayerfragment) (`InterpolationsLayerFragment`), used with different roles for:
   - paleographic transcriptions
   - glosses
   - paratext
@@ -155,7 +155,7 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
 
 Literary quotations.
 
-- entries (`VarQuotationEntry[]`): quotations with variants:
+- `quotations` (`VarQuotation[]`): quotations with variants:
   - `tag` (`string`, thesaurus: `quotation-tags`)
   - `authority`\* (`string`, thesaurus: `quotation-authorities`): the authority type (grammatical/linguistic)
   - `work`\* (`string`, hierarchical thesaurus: `author-works`): author and work.
@@ -179,11 +179,11 @@ Literary quotations.
 
 As you can see, the variants listed for the quotations are located only for human readers via `lemma`.
 
-### InterpLayerFragment
+### InterpolationsLayerFragment
 
 Interpolations and transcriptions.
 
-- `entries` (`InterpolationEntry[]`):
+- `interpolations` (`Interpolation[]`):
   - `type`\* (string, enumeration equal to that of the apparatus entry type)
   - `role`\* (`string`, thesaurus: `interpolation-roles`): "paleographic transcription", "gloss", "paratext".
   - `tag` (`string`, thesaurus: `interpolation-tags`)
