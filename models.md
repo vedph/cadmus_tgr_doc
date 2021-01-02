@@ -1,6 +1,6 @@
 # TGR Models
 
-Models for _Tradizione Grammaticale Romana_.
+Models for _Tradizione Grammaticale Romana_. You can also a glance at the [graphical overview](overview.md).
 
 ## Items
 
@@ -23,43 +23,43 @@ Layer parts:
   - glosses
   - paratext
   - humanistic interpolations
-- linguistic tags layer (`LingTagsLayerFragment`)
+- [linguistic tags layer](#lingtagslayerfragment) (`LingTagsLayerFragment`)
 
 ### Manuscript
 
 - [historical date](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#historical-date)\*
 - [generic bibliography part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#bibliography)
-- ms signature(s)\* [Itinera ms signatures](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md).
-- ms place\*: [Itinera ms place of origin](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md) (the places of provenance are listed in the ms history).
-- ms contents\* (`MsContentPart`)
-- ms codicological description\* (`MsUnitsPart`)
-- ms history\* (`MsHistoryPart`)
-- ms scripts part (`MsScriptsPart`)
-- ms formal features (`MsFormalFeaturesPart`)
-- ms ornamentation (`MsOrnamentsPart`)
+- [ms signature(s)](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md)\* (Itinera)
+- [ms place](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md)\* (Itinera; place of origin; the places of provenance are listed in the ms history).
+- [ms contents](#mscontentspart)\* (`MsContentPart`)
+- [ms units](#msunitspart)\* (`MsUnitsPart`)
+- [ms scripts](#msscriptspart) (`MsScriptsPart`)
+- [ms formal features](#msformalfeaturespart) (`MsFormalFeaturesPart`)
+- [ms ornamentations](#msornamentspart) (`MsOrnamentsPart`)
+- [ms history](#mshistorypart)\* (`MsHistoryPart`)
 
 ## Parts
 
 ### MsSignaturesPart
 
-See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#mssignaturespart)
+See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#mssignaturespart).
 
 ### MsPlacePart
 
-See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#msplacepart)
+See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#msplacepart).
 
 ### MsContentsPart
 
-- contents (`MsContent[]`):
-  - start\* (`MsLocation`)
-  - end\* (`MsLocation`)
-  - work (`string`, hierarchical thesaurus: `author-works`): author and work; this can be picked from a thesaurus, or manually written.
-  - location (`string`)
-  - title (`string`)
-  - incipit\* (`string`)
-  - explicit\* (`string`)
-  - editions (`DocReference[]`): references to modern editions.
-  - note (`string`)
+- `contents` (`MsContent[]`):
+  - `start`\* (`MsLocation`)
+  - `end`\* (`MsLocation`)
+  - `work` (`string`, hierarchical thesaurus: `author-works`): author and work; this can be picked from a thesaurus, or manually written.
+  - `location` (`string`)
+  - `title` (`string`)
+  - `incipit`\* (`string`)
+  - `explicit`\* (`string`)
+  - `editions` (`DocReference[]`): references to modern editions.
+  - `note` (`string`)
 
 ### MsUnitsPart
 
@@ -194,7 +194,7 @@ Interpolations and transcriptions.
   - `sources` (`ReadingSource[]`)
     - `witness`\* (`string`, thesaurus: `apparatus-witnesses`)
     - `handId` (`string`)
-  - `quotations` (`VarQuotationEntry[]`)
+  - `quotations` (`VarQuotation[]`)
 
 ### LingTagsLayerFragment
 
