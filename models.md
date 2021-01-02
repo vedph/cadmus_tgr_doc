@@ -1,6 +1,6 @@
 # TGR Models
 
-Models for _Tradizione Grammaticale Romana_. You can also a glance at the [graphical overview](overview.md).
+Models for _Tradizione Grammaticale Romana_. You can also have a glance at the [graphical overview](overview.md).
 
 ## Items
 
