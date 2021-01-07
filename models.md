@@ -214,9 +214,9 @@ The user experience for tags is here planned as follows: the user picks tags fro
 
 Every tag picked from the tree is stored in a list. A button next to each picked tag in this list allows removing it.
 
-Also, some tags can be annotated, and their annotations types are explicitly defined. This is done in another auxiliary thesaurus, whose ID is equal to the ID feeding this fragment editor, plus a suffix (e.g. `-note`).
+Also, some tags can be annotated, and their annotations types are explicitly defined. This is done in another auxiliary thesaurus, whose ID is equal to the ID of the thesaurus feeding this fragment editor, plus a suffix `-aux`.
 
-For instance, given these thesaurus entries:
+For instance, given these thesaurus entries in a thesaurus with ID `ling-tags`:
 
 ```json
 {
@@ -233,7 +233,7 @@ For instance, given these thesaurus entries:
 },
 ```
 
-the auxiliary thesaurus might include:
+the auxiliary thesaurus (with ID `ling-tags-aux`) might include:
 
 ```json
 {
@@ -242,6 +242,13 @@ the auxiliary thesaurus might include:
 }
 ```
 
-where each entry has an ID=built from contains the ID of the target thesaurus entry (here `pes.schema`), followed by `--` and the ID of the annotation's tag (here `schema`); its value is the label of the annotation's tag (here `schema-figura`).
+where each entry has an ID=built from contains the ID of the target thesaurus entry (here `pes.schema`), followed by `--` and the ID of the annotation's tag (here `schema`); its value is the label of the annotation's tag (here `schema-figura`):
+
+```json
+{
+  "id": "<TARGET-ENTRY>--<AUX-ID>",
+  "value": "<AUX-VALUE>"
+}
+```
 
 This way, the editor will know that the thesaurus entry ID `pes.schema` can get an annotation with ID=`schema`, labeled `schema-figura` in the UI. This entry ID will have an additional button in the list of selected IDs, allowing you to edit its annotations. When clicked, the annotations will be all those entries whose ID starts with `pes.schema--` in the auxiliary thesaurus (if any); so here you will be able to enter some text content in a text box labeled `schema-figura`.
