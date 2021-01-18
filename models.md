@@ -75,6 +75,7 @@ Codicological description.
     - `date` (`HistoricalDate`)
     - `note` (`string`)
   - `material`\* (`string`, thesaurus: `ms-materials`)
+  - `guardSheetMaterial` (`string`, thesaurus: `ms-materials`)
   - `sheetCount`\* (`int`)
   - `guardSheetCount`\* (`int`)
   - `guardSheets` (`MsGuardSheet[]`):
@@ -88,7 +89,9 @@ Codicological description.
   - `sheetNumbering` (`string`; leaf or page numbering)
   - `quireNumbering` (`string`)
   - `leafSizes` (`PhysicalSize[]`): note that the requested _incomplete_ property is rather represented by `tag`. Tag is a more general purpose classification and tagging device for each specific dimension: it may be "incomplete", and/or also additional values.
+  - `leafSizeSamples` (`MsLocation[]`): locations of the sheet(s) used as samples for taking the measurements in `leafSizes`.
   - `writtenAreaSize` (`PhysicalSize`)
+  - `writtenAreaSizeSamples` (`MsLocation[]`): locations of the sheet(s) used as samples for taking the measurements in `writtenAreaSize`.
   - `rulings` (`MsRuling[]`)
     - `manner` of execution (`string`, thesaurus: `ms-ruling-manners@en`)
     - `system` (`string`, thesaurus: `ms-ruling-systems@en`)
@@ -102,7 +105,7 @@ Codicological description.
 
 - `scripts` (`MsScript[]`):
   - `role`\* (`string`, thesaurus: `ms-script-roles`); e.g. mano principale, secondaria, scriptio superior, scriptio inferior...
-  - `language`\* (`string` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `ms-languages`)
+  - `languages`\* (`string[]` [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `ms-languages`): 1 or more languages.
   - `type` (`string`, hierarchical thesaurus: `ms-script-types`)
   - `hands` (`MsHand[]`+):
     - `id`\* (`string`)
