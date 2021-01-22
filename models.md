@@ -30,7 +30,7 @@ Layer parts:
 - [historical date](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#historical-date)\*
 - [generic bibliography part](https://github.com/vedph/cadmus_doc/blob/master/web/help/general-parts.md#bibliography)
 - [ms signature(s)](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-signatures-part.md)\* (Itinera)
-- [ms place](https://github.com/vedph/cadmus_itinera_doc/blob/master/help/ms-place-part.md)\* (Itinera; place of origin; the places of provenance are listed in the ms history).
+- [ms place(s)](#msplacespart): place(s) of origin; the places of provenance are listed in the ms history.
 - [ms contents](#mscontentspart)\* (`MsContentPart`)
 - [ms units](#msunitspart)\* (`MsUnitsPart`)
 - [ms scripts](#msscriptspart) (`MsScriptsPart`)
@@ -44,9 +44,17 @@ Layer parts:
 
 See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#mssignaturespart).
 
-### MsPlacePart
+### MsPlacesPart
 
-See [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#msplacepart).
+Inspired by [Itinera](https://github.com/vedph/cadmus_itinera_doc/blob/master/models.md#msplacepart), but for multiple places (multiple hypotheses on the origin), and without the subscription:
+
+- `places` (`MsPlace[]`):
+  - `area`\* (`string`, thesaurus)
+  - `address` (`string`)
+  - `city` (`string`)
+  - `site` (`string`)
+  - `rank` (`number`): 0 if not used, else a rank to define the level of probability of this hypothesis (e.g. 1=most probable, 2=less probable, etc.).
+  - `sources` (`DocReference[]`)
 
 ### MsContentsPart
 
