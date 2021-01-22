@@ -86,6 +86,7 @@ Codicological description.
   - `guardSheetMaterial` (`string`, thesaurus: `ms-materials`)
   - `sheetCount`\* (`int`)
   - `guardSheetCount`\* (`int`)
+  - `backGuardSheetCount`\* (`int`)
   - `guardSheets` (`MsGuardSheet[]`):
     - `isBack` (`boolean`)
     - `material` (`string`, thesaurus: `ms-materials`)
@@ -145,6 +146,7 @@ Ornamentation (in code shortened as _ornament_. for practical purposes).
   - `end`\* (`MsLocation`)
   - `size` (`PhysicalSize`)
   - `description` (`string`, MD, 1000)
+  - `note` (`string`, 500)
 
 ### MsHistoryPart
 
