@@ -78,6 +78,7 @@ Codicological description.
   - `end`\*: `MsLocation`
   - `groupId` (`string`)
   - `groupOrdinal` (`number`)
+  - `date` (`HistoricalDate`)
   - `palimpsests` (`MsPalimpsest[]`): the sheet(s) which are palimpsests inside this unit:
     - `locations` (`MsLocation[]`): 1 or more sheets in the unit's range.
     - `date` (`HistoricalDate`)
@@ -99,8 +100,8 @@ Codicological description.
   - `quireNumbering` (`string`)
   - `leafSizes` (`PhysicalSize[]`): note that the requested _incomplete_ property is rather represented by `tag`. Tag is a more general purpose classification and tagging device for each specific dimension: it may be "incomplete", and/or also additional values.
   - `leafSizeSamples` (`MsLocation[]`): locations of the sheet(s) used as samples for taking the measurements in `leafSizes`.
-  - `writtenAreaSize` (`PhysicalSize`)
-  - `writtenAreaSizeSamples` (`MsLocation[]`): locations of the sheet(s) used as samples for taking the measurements in `writtenAreaSize`.
+  - `writtenAreaSizes` (`PhysicalSize[]`)
+  - `writtenAreaSizeSamples` (`MsLocation[]`): locations of the sheet(s) used as samples for taking the measurements in `writtenAreaSizes`.
   - `rulings` (`MsRuling[]`)
     - `manner` of execution (`string`, thesaurus: `ms-ruling-manners@en`)
     - `system` (`string`, thesaurus: `ms-ruling-systems@en`)
