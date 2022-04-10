@@ -199,7 +199,7 @@ Interpolations and transcriptions.
 
 - `interpolations` (`Interpolation[]`):
   - `type`\* (string, enumeration equal to that of the apparatus entry type)
-  - `role`\* (`string`, thesaurus: `interpolation-roles`): "paleographic transcription", "gloss", "paratext".
+  - `role`\* (`string`, thesaurus: `interpolation-roles`): "paleographic transcription", "gloss", "paratext", "humanistic interpolations"
   - `tag` (`string`, thesaurus: `interpolation-tags`)
   - `languages`\* (`string[]`, [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3), thesaurus: `interpolation-languages`)
   - `value`\* (`string`)
